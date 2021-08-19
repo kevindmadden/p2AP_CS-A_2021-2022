@@ -15,6 +15,7 @@ public class s01_PrintStatements_Variables {
         String word = "This is a sentence stored in a variable.";
         boolean isItRaining = true;
         boolean isItCloudy = false;
+        char aSingleCharacter = 'a';
 
         //Printing out something stored in a variable
         System.out.println(word);
