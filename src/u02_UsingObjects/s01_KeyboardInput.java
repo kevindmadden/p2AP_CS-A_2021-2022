@@ -1,3 +1,5 @@
+package u02_UsingObjects;
+
 import java.util.Scanner;
 
 public class s01_KeyboardInput {

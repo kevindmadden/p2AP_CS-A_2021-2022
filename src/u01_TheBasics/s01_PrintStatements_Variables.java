@@ -1,3 +1,5 @@
+package u01_TheBasics;
+
 public class s01_PrintStatements_Variables {
 
     public static void main(String[] args) {

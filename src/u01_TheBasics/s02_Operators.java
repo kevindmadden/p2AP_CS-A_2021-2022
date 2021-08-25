@@ -1,3 +1,5 @@
+package u01_TheBasics;
+
 public class s02_Operators {
     public static void main(String[] args) {
 
