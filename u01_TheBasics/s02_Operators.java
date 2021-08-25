@@ -65,6 +65,18 @@ public class s02_Operators {
         count--; //this is equivalent to: count = count - 1;
         System.out.println(count); //prints out a 1
 
+        /*
+            Casting
+         */
+
+        System.out.println("If we don't cast, then 5/2 will be... ");
+        int enteredAsInt1 = 5;
+        int enteredAsInt2 = 2;
+        System.out.println(enteredAsInt1/enteredAsInt2); //print out 2
+        //This is how to cast and int to instead be a double
+        System.out.println((double)enteredAsInt1/enteredAsInt2); //print out 2.5
+
+
 
 
 
