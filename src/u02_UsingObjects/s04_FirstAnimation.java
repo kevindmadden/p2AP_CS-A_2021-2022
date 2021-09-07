@@ -14,7 +14,7 @@ public class s04_FirstAnimation {
         while(true){
 
             //Bunny example
-            //              =         50ft    + 1ft/hour*9
+            //              =         50ft    + 1ft/hour * 9hours
             // What we are trying to do:
             //new position  = former position + vel*timeElapsed
             xPos = xPos + xVel*timeElapsed;
@@ -32,5 +32,4 @@ public class s04_FirstAnimation {
             //StdDraw.clear(); //This clears everything drawn on the screen. You must redraw the image you wish to display for each frame of an animation
         }
     }
-
 }
