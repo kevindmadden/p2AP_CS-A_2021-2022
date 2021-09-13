@@ -17,6 +17,7 @@ public class s06_DetectingMouseClicks {
                 isClicked = true;
             }
 
+
             if (isClicked == true) {
                 if (screenColor.equals(StdDraw.YELLOW)) {
                     screenColor = StdDraw.GREEN;
