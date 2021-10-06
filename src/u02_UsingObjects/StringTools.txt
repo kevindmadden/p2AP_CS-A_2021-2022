@@ -1,0 +1,21 @@
+Reference sheet: https://apstudents.collegeboard.org/ap/pdf/ap-computer-science-a-java-quick-reference_0.pdf
+
+
+If the length of the str parameter can vary, then you will likely need to make use of str.length() in order to avoid out outOfBounds errors.
+
+0123456
+awesome
+^^ length is 7 because there are 7 character
+
+012
+dog
+^^ length is 3 because there are 3 character
+
+
+So.. if you call .length() on a string and subtract 1, that will give you the final index number of the string.
+
+
+
+Use .indexOf if you are trying to locate a specific word/fragment inside of a larger string.
+
+When you use .substring, it can be useful to store the substring you pull out in a well-named variable. Then you can just refer to that variable in if-statements, which can make your code waaaaay easier to read.
