@@ -21,12 +21,28 @@ public class s03_SnowAnimation {
             System.out.println(xPos[i]);
         }
 
-        double yVel = 10;
+        double yVel = 70;
 
         double timeElapsed = 0.017; //0.017 seconds-- this is how long each frame of our animation appears.
         while(true){
 
+            StdDraw.setPenColor(StdDraw.BLACK);
+            StdDraw.filledRectangle(50, 50, 60, 60);
 
+            //Calculations
+            for(int i=0; i<yPos.length; i++){
+                yVel = Math.random()*100 - 20;
+                yPos[i] = yPos[i] - yVel*timeElapsed;
+                if(yPos[i] <= 0){
+                    yPos[i] = 100;
+                }
+            }
+
+            //Drawing
+            StdDraw.setPenColor(StdDraw.WHITE);
+            for(int i=0; i<yPos.length; i++){
+                StdDraw.filledCircle(xPos[i], yPos[i], .5);
+            }
 
 
             StdDraw.show(); //Because we have called StdDraw.enableDoubleBuffering(), everything that you draw up until this point will be loaded into java's memory but not actually drawn. Calling StdDraw.draw() then draws everything at once that is loaded into java's memory.

@@ -3,7 +3,7 @@ package u03_ArraysAndLoops;
 public class s02_ForLoops {
     public static void main(String[] args){
 
-        int[] arr = {657, 54, 865, 476, 65, 654, 978, 314, 563, 10};
+        int[] arr = {657, 54, 865, 476, 65, 654, 978, 314, 563, 10}; //10 elements
 
         //Goal #1 - Use while-loop to cycle through an array and print out each element's value
 
@@ -17,6 +17,8 @@ public class s02_ForLoops {
         for(int i=0; i<arr.length; i++){
             System.out.println(arr[i]);
         }
+
+
 
 
         int[] large = new int[1000];
