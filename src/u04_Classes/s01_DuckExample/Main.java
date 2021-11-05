@@ -5,7 +5,14 @@ public class Main {
         Duck duck1 = new Duck();
         Duck duck2 = new Duck();
 
-        System.out.println(duck1.speechContent);
-
+        duck1.honk();
+        duck1.honk();
+        duck1.honk();
+        duck2.honk();
+        System.out.println(duck1.getNumOfTimesHonked());
+        System.out.println(duck2.getNumOfTimesHonked());
+        duck1.killedByCar();
+        duck1.honk();
+        duck2.honk();
     }
 }
