@@ -11,19 +11,17 @@ public class Main {
             snowflakes[i] = new Snowflake();
         }
 
-
         double timeElapsed = 0.017; //0.017 seconds-- this is how long each frame of our animation appears.
         while(true){
             StdDraw.setPenColor(StdDraw.BLACK);
             StdDraw.filledRectangle(50, 50, 60, 60);
 
-            for(int i=0; i<snowflakes.length; i++){
-                snowflakes[i].calculate(timeElapsed);
+            for(Snowflake x : snowflakes){
+                x.calculate(timeElapsed);
             }
 
-
-            for(int i=0; i<snowflakes.length; i++){
-                snowflakes[i].draw();
+            for(Snowflake snowflake : snowflakes){
+                snowflake.draw();
             }
 
 

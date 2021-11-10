@@ -13,7 +13,7 @@ public class Snowflake {
 
     public void calculate(double timeElapsed){
         yPos = yPos - yVel*timeElapsed;
-        System.out.println(yPos);
+
     }
 
     public void draw(){
