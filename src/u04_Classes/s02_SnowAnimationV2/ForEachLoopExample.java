@@ -3,6 +3,7 @@ package u04_Classes.s02_SnowAnimationV2;
 public class ForEachLoopExample {
     public static void main(String[] args){
 
+
         int[] nums = new int[10];
         for(int i=0; i<nums.length; i++){
             nums[i] = i*2;

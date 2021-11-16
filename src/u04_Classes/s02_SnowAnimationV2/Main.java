@@ -11,6 +11,7 @@ public class Main {
             snowflakes[i] = new Snowflake();
         }
 
+
         double timeElapsed = 0.017; //0.017 seconds-- this is how long each frame of our animation appears.
         while(true){
             StdDraw.setPenColor(StdDraw.BLACK);
