@@ -4,6 +4,7 @@ public class Snowflake {
     private double xPos;
     private double yPos;
     private double yVel;
+    private static int totalSnowflakeCount = 0;
 
     public Snowflake(){
         xPos = Math.random()*100;
@@ -13,6 +14,11 @@ public class Snowflake {
 
     public void calculate(double timeElapsed){
         yPos = yPos - yVel*timeElapsed;
+        if(yPos < 0){
+            yPos = 110;
+            totalSnowflakeCount++;
+            System.out.println(totalSnowflakeCount);
+        }
 
     }
 
