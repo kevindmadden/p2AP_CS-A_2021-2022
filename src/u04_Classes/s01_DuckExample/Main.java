@@ -15,7 +15,9 @@ public class Main {
         duck1.honk();
         duck2.honk();
 
-        duck1.setNumOfTimesHonked(9999);
+        System.out.println("Total num of honks (accessed from Main method): "+Duck.getTotalNumOfAllHonks());
+
+
 
         System.out.println(duck1.toString());
 

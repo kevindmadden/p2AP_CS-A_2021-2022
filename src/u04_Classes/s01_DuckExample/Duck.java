@@ -8,6 +8,9 @@ public class Duck {
     private boolean isFlying;
     private boolean isAlive;
 
+    //Static variable
+    private static int totalNumOfAllHonks = 0;
+
     public Duck(){
         numOfTimesHonked = 0;
         speechContent = "honk!";
@@ -18,13 +21,22 @@ public class Duck {
 
     public void honk(){
         if(isAlive){
+            totalNumOfAllHonks++;
+            System.out.println("totalNumOfAllHonks: "+totalNumOfAllHonks);
             this.numOfTimesHonked++;
             System.out.println(speechContent);
+
         }else{
             System.out.println("Dead ducks can't honk.");
         }
 
     }
+
+    //Static getter method example
+    public static int getTotalNumOfAllHonks(){
+        return totalNumOfAllHonks;
+    }
+
 
     //getter/accessor method example
     public int getNumOfTimesHonked(){
