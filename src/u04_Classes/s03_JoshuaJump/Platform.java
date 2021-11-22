@@ -22,7 +22,19 @@ public class Platform {
         StdDraw.filledRectangle(xPos, yPos, halfWidth, halfHeight);
     }
 
+    public double getxPos() {
+        return xPos;
+    }
 
+    public double getyPos() {
+        return yPos;
+    }
 
+    public double getHalfWidth() {
+        return halfWidth;
+    }
 
+    public double getHalfHeight() {
+        return halfHeight;
+    }
 }
