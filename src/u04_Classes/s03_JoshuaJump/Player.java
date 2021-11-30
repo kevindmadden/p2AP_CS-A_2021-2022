@@ -13,9 +13,13 @@ public class Player {
     private double yVel;
     private double accel;
     private Platform ground;
-    private boolean hasJumpBeenUsed;
+    private boolean hasUsedJump;
     private double jumpStartYPos;
-    private boolean canJumpAgain;
+    private boolean hasReachedMaxJumpHeight;
+    private boolean shouldGravityBeginForcingJoshuaBackDown;
+    private double maxJumpHeight;
+    private boolean isOnPlatform;
+
     private double yFeet;
 
     public Player(double xPos, double yPos, double halfWidth, double halfHeight, Platform ground){
@@ -27,8 +31,10 @@ public class Player {
         this.height = halfHeight*2;
         this.accel = 1000;
         this.ground = ground;
-        this.hasJumpBeenUsed = false;
-        this.canJumpAgain = false;
+        hasUsedJump = false;
+        hasReachedMaxJumpHeight = false;
+        shouldGravityBeginForcingJoshuaBackDown = false;
+        maxJumpHeight = 50;
 
     }
 
@@ -51,22 +57,59 @@ public class Player {
         }
         xPos = xPos + xVel*timeElapsed;
 
-        if(StdDraw.isKeyPressed(KeyEvent.VK_UP)){
+        /*if(StdDraw.isKeyPressed(KeyEvent.VK_UP)){
             //if(this.yPos )
-            if((this.yFeet-this.jumpStartYPos < 50)){
+            if((this.yFeet-this.jumpStartYPos < maxJumpHeight)){
+                isOnPlatform = false;
                 yVel = 40;
             }else{
+
                 yVel=0;
             }
-            if(!hasJumpBeenUsed){
+            if(!hasUsedJump){
                 jumpStartYPos = this.yFeet;
-                hasJumpBeenUsed = true;
             }
         }else{
             yVel = 0;
             if(this.yFeet == this.ground.getYTop()){
                 System.out.println("On ground");
             }
+        }*/
+
+        if(this.yFeet == this.ground.getYTop()){
+            System.out.println("On ground");
+            isOnPlatform = true;
+            hasUsedJump = false;
+        }else{
+            isOnPlatform = false;
+            hasUsedJump = true;
+        }
+
+        if((this.yFeet-this.jumpStartYPos < maxJumpHeight)){
+            hasReachedMaxJumpHeight = false;
+        }
+
+        //When is it true that josh has reached his max jump height
+        if((this.yFeet-this.jumpStartYPos >= maxJumpHeight)){
+            hasReachedMaxJumpHeight = true;
+        }
+        if(!isOnPlatform && !StdDraw.isKeyPressed(KeyEvent.VK_UP)){
+            hasReachedMaxJumpHeight = true;
+        }
+
+
+
+
+
+
+
+        //if(StdDraw.isKeyPressed(KeyEvent.VK_UP)){
+
+        //}
+
+        if(this.yPos-this.halfHeight < ground.getyPos()+ground.getHalfHeight()){
+            this.yPos = ground.getyPos()+ground.getHalfHeight()+this.halfHeight; //places Joshua on top of ground exactly
+
         }
 
         //How do we determine whether the jump has been used?
@@ -78,10 +121,6 @@ public class Player {
         yPos = yPos + yVel*timeElapsed - (accel)*Math.pow(timeElapsed, 2);
 
         System.out.println("yPos: "+yPos+", yVel:"+yVel);
-        if(this.yPos-this.halfHeight < ground.getyPos()+ground.getHalfHeight()){
-            this.yPos = ground.getyPos()+ground.getHalfHeight()+this.halfHeight; //places Joshua on top of ground exactly
-            this.canJumpAgain = true;
-        }
 
 
 
