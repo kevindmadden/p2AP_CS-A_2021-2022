@@ -35,6 +35,7 @@ public class Player {
         hasReachedMaxJumpHeight = false;
         shouldGravityBeginForcingJoshuaBackDown = false;
         maxJumpHeight = 50;
+        jumpStartYPos = 0;
 
     }
 
@@ -44,7 +45,7 @@ public class Player {
     }
 
     public void calculate(double timeElapsed){
-        this.yFeet = this.yPos-this.halfHeight;
+        //this.yFeet = this.yPos-this.halfHeight;
 
         if(StdDraw.isKeyPressed(KeyEvent.VK_LEFT) && StdDraw.isKeyPressed(KeyEvent.VK_RIGHT)){
             xVel = 0;
@@ -56,6 +57,15 @@ public class Player {
             xVel = 0;
         }
         xPos = xPos + xVel*timeElapsed;
+
+        if(StdDraw.isKeyPressed(KeyEvent.VK_UP)) {
+            if ((this.yFeet - this.jumpStartYPos < maxJumpHeight)) {
+                isOnPlatform = false;
+                yVel = 40;
+            } else {
+                yVel = 0;
+            }
+        }
 
         /*if(StdDraw.isKeyPressed(KeyEvent.VK_UP)){
             //if(this.yPos )
@@ -76,14 +86,23 @@ public class Player {
             }
         }*/
 
+
         if(this.yFeet == this.ground.getYTop()){
-            System.out.println("On ground");
             isOnPlatform = true;
             hasUsedJump = false;
+            hasReachedMaxJumpHeight = false;
+            jumpStartYPos = this.ground.getYTop();
+
         }else{
             isOnPlatform = false;
             hasUsedJump = true;
+            if(!hasReachedMaxJumpHeight){
+                shouldGravityBeginForcingJoshuaBackDown = false;
+            }
+
         }
+
+
 
         if((this.yFeet-this.jumpStartYPos < maxJumpHeight)){
             hasReachedMaxJumpHeight = false;
@@ -119,8 +138,14 @@ public class Player {
         //When joshua hits the ground again
 
         yPos = yPos + yVel*timeElapsed - (accel)*Math.pow(timeElapsed, 2);
+        this.yFeet = this.yPos-this.halfHeight;
+        System.out.println(ground.getYTop());
+        if(this.yFeet < ground.getYTop()){
+            yPos = ground.getYTop()+this.halfHeight;
+            System.out.println("in here");
+        }
+        System.out.println("yPos after: "+yPos);
 
-        System.out.println("yPos: "+yPos+", yVel:"+yVel);
 
 
 

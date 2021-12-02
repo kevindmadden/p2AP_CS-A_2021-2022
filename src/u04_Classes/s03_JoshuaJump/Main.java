@@ -28,7 +28,7 @@ public class Main {
         Platform ground = new Platform(50, 5, 50, 5);
         Platform platform1 = new Platform(75, 30, 7, 2);
 
-        Player player = new Player(25, 5, 2,5, ground);
+        Player player = new Player(25, 15, 2,5, ground);
 
 
         double timeElapsed = 0.017; //0.017 seconds-- this is how long each frame of our animation appears.
