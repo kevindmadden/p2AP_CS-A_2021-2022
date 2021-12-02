@@ -58,13 +58,19 @@ public class Player {
         }
         xPos = xPos + xVel*timeElapsed;
 
-        if(StdDraw.isKeyPressed(KeyEvent.VK_UP)) {
-            if ((this.yFeet - this.jumpStartYPos < maxJumpHeight)) {
+        System.out.println(yVel);
+        if(StdDraw.isKeyPressed(KeyEvent.VK_UP) && !shouldGravityBeginForcingJoshuaBackDown) {
+            System.out.println(shouldGravityBeginForcingJoshuaBackDown);
+            if ((this.yFeet - this.jumpStartYPos < maxJumpHeight) && !shouldGravityBeginForcingJoshuaBackDown ) {
                 isOnPlatform = false;
                 yVel = 40;
             } else {
+                shouldGravityBeginForcingJoshuaBackDown = true;
                 yVel = 0;
             }
+        }else if(!StdDraw.isKeyPressed(KeyEvent.VK_UP) && !isOnPlatform){
+            shouldGravityBeginForcingJoshuaBackDown = true;
+            yVel = 0;
         }
 
         /*if(StdDraw.isKeyPressed(KeyEvent.VK_UP)){
