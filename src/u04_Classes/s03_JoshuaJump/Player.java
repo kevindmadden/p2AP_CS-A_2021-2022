@@ -3,6 +3,7 @@ package u04_Classes.s03_JoshuaJump;
 import java.awt.event.KeyEvent;
 
 public class Player {
+    private static double JUMP_SPEED = 160;
     private double xPos;
     private double yPos;
     private double halfWidth;
@@ -29,12 +30,12 @@ public class Player {
         this.halfHeight = halfHeight;
         this.width = halfWidth*2;
         this.height = halfHeight*2;
-        this.accel = 1000;
+        this.accel = 4000;
         this.ground = ground;
         hasUsedJump = false;
         hasReachedMaxJumpHeight = false;
         shouldGravityBeginForcingJoshuaBackDown = false;
-        maxJumpHeight = 50;
+        maxJumpHeight = 30;
         jumpStartYPos = 0;
 
     }
@@ -50,98 +51,41 @@ public class Player {
         if(StdDraw.isKeyPressed(KeyEvent.VK_LEFT) && StdDraw.isKeyPressed(KeyEvent.VK_RIGHT)){
             xVel = 0;
         }else if(StdDraw.isKeyPressed(KeyEvent.VK_LEFT)){
-            xVel = -20;
+            xVel = -80;
         }else if(StdDraw.isKeyPressed(KeyEvent.VK_RIGHT)){
-            xVel = 20;
+            xVel = 80;
         }else{
             xVel = 0;
         }
         xPos = xPos + xVel*timeElapsed;
 
-        System.out.println(yVel);
-        if(StdDraw.isKeyPressed(KeyEvent.VK_UP) && !shouldGravityBeginForcingJoshuaBackDown) {
-            System.out.println(shouldGravityBeginForcingJoshuaBackDown);
-            if ((this.yFeet - this.jumpStartYPos < maxJumpHeight) && !shouldGravityBeginForcingJoshuaBackDown ) {
-                isOnPlatform = false;
-                yVel = 40;
-            } else {
-                shouldGravityBeginForcingJoshuaBackDown = true;
-                yVel = 0;
-            }
-        }else if(!StdDraw.isKeyPressed(KeyEvent.VK_UP) && !isOnPlatform){
-            shouldGravityBeginForcingJoshuaBackDown = true;
-            yVel = 0;
-        }
 
-        /*if(StdDraw.isKeyPressed(KeyEvent.VK_UP)){
-            //if(this.yPos )
-            if((this.yFeet-this.jumpStartYPos < maxJumpHeight)){
-                isOnPlatform = false;
-                yVel = 40;
-            }else{
-
-                yVel=0;
-            }
-            if(!hasUsedJump){
-                jumpStartYPos = this.yFeet;
-            }
-        }else{
-            yVel = 0;
-            if(this.yFeet == this.ground.getYTop()){
-                System.out.println("On ground");
-            }
-        }*/
-
-
-        if(this.yFeet == this.ground.getYTop()){
+        if(this.yFeet <= this.ground.getYTop()){
             isOnPlatform = true;
             hasUsedJump = false;
             hasReachedMaxJumpHeight = false;
             jumpStartYPos = this.ground.getYTop();
-
-        }else{
-            isOnPlatform = false;
-            hasUsedJump = true;
-            if(!hasReachedMaxJumpHeight){
-                shouldGravityBeginForcingJoshuaBackDown = false;
-            }
-
         }
 
-
-
-        if((this.yFeet-this.jumpStartYPos < maxJumpHeight)){
-            hasReachedMaxJumpHeight = false;
+        if(StdDraw.isKeyPressed(KeyEvent.VK_UP) && !hasReachedMaxJumpHeight){
+            yVel = JUMP_SPEED;
         }
 
-        //When is it true that josh has reached his max jump height
-        if((this.yFeet-this.jumpStartYPos >= maxJumpHeight)){
+        if(!StdDraw.isKeyPressed(KeyEvent.VK_UP) && yVel==JUMP_SPEED){
             hasReachedMaxJumpHeight = true;
+            yVel = 0;
         }
-        if(!isOnPlatform && !StdDraw.isKeyPressed(KeyEvent.VK_UP)){
+
+        if(this.yFeet-this.jumpStartYPos > maxJumpHeight){
             hasReachedMaxJumpHeight = true;
         }
 
-
-
-
-
-
-
-        //if(StdDraw.isKeyPressed(KeyEvent.VK_UP)){
-
-        //}
-
-        if(this.yPos-this.halfHeight < ground.getyPos()+ground.getHalfHeight()){
-            this.yPos = ground.getyPos()+ground.getHalfHeight()+this.halfHeight; //places Joshua on top of ground exactly
-
+        if(hasReachedMaxJumpHeight){
+            yVel = 0;
         }
 
-        //How do we determine whether the jump has been used?
-        //Have we pressed the up-key?
-        //Presses of the up-key are invalid if Joshua is in the air
-        //How do we tell when joshua can jump again?
-        //When joshua hits the ground again
+
+
 
         yPos = yPos + yVel*timeElapsed - (accel)*Math.pow(timeElapsed, 2);
         this.yFeet = this.yPos-this.halfHeight;
@@ -153,8 +97,30 @@ public class Player {
         System.out.println("yPos after: "+yPos);
 
 
-
+        System.out.println(this.toString());
 
     }
 
+    @Override
+    public String toString() {
+        return "Player{" +
+                "xPos=" + xPos +
+                ", yPos=" + yPos +
+                ", halfWidth=" + halfWidth +
+                ", halfHeight=" + halfHeight +
+                ", width=" + width +
+                ", height=" + height +
+                ", xVel=" + xVel +
+                ", yVel=" + yVel +
+                ", accel=" + accel +
+                ", ground=" + ground +
+                ", hasUsedJump=" + hasUsedJump +
+                ", jumpStartYPos=" + jumpStartYPos +
+                ", hasReachedMaxJumpHeight=" + hasReachedMaxJumpHeight +
+                ", shouldGravityBeginForcingJoshuaBackDown=" + shouldGravityBeginForcingJoshuaBackDown +
+                ", maxJumpHeight=" + maxJumpHeight +
+                ", isOnPlatform=" + isOnPlatform +
+                ", yFeet=" + yFeet +
+                '}';
+    }
 }
