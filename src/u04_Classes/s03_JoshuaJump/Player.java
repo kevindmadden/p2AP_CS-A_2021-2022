@@ -3,7 +3,7 @@ package u04_Classes.s03_JoshuaJump;
 import java.awt.event.KeyEvent;
 
 public class Player {
-    private static double JUMP_SPEED = 160;
+    private static final double JUMP_SPEED = 160;
     private double xPos;
     private double yPos;
     private double halfWidth;

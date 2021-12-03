@@ -3,21 +3,11 @@ package u04_Classes.s03_JoshuaJump;
 public class Main {
 
     /*
-    -Player (Joshua)
-        -Movement
-            -Can move left/right
-            -Space key - jump
-        -Gravity??
-    -Platforms
-        -Ground
-        -High place to jump on
-        -You shouldn't be able to fall through the ground
-     -Coins
-     -Background features
-
-     -Main Class
-        -Store all platforms in an array
-        -Loop through the array to do collision detection stuff
+    - Getting other platform to work
+        -Moving platform
+    -Sprint feature
+    -Enemies
+    -Coins (for each coin you get, your score goes up)
 
      */
 
@@ -29,6 +19,7 @@ public class Main {
         Platform platform1 = new Platform(75, 30, 7, 2);
 
         Player player = new Player(25, 15, 2,5, ground);
+        Enemy enemy = new Enemy(ground);
 
 
         double timeElapsed = 0.017; //0.017 seconds-- this is how long each frame of our animation appears.
@@ -37,6 +28,7 @@ public class Main {
 
             //Calculation
             player.calculate(timeElapsed);
+            enemy.calculate(timeElapsed);
 
 
             //Graphics
@@ -44,6 +36,7 @@ public class Main {
             ground.draw();
             platform1.draw();
             player.draw();
+            enemy.draw();
 
 
 
