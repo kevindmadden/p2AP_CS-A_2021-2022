@@ -16,4 +16,6 @@ public class AnimationTemplate {
             StdDraw.clear(); //This clears everything drawn on the screen. You must redraw the image you wish to display for each frame of an animation
         }
     }
+
+
 }

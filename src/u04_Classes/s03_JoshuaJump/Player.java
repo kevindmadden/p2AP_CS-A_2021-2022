@@ -89,16 +89,14 @@ public class Player {
 
         yPos = yPos + yVel*timeElapsed - (accel)*Math.pow(timeElapsed, 2);
         this.yFeet = this.yPos-this.halfHeight;
-        System.out.println(ground.getYTop());
         if(this.yFeet < ground.getYTop()){
             yPos = ground.getYTop()+this.halfHeight;
-            System.out.println("in here");
         }
-        System.out.println("yPos after: "+yPos);
 
+    }
 
-        System.out.println(this.toString());
-
+    public double getxPos() {
+        return xPos;
     }
 
     @Override

@@ -8,7 +8,7 @@ public class Enemy {
     private double size;
 
     public Enemy(Platform ground){
-        yPos = ground.getYTop();
+        yPos = 3+ground.getYTop();
         size = 3;
         xVel = 30;
     }
