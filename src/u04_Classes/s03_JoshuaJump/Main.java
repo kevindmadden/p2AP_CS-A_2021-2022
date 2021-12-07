@@ -63,7 +63,21 @@ public class Main {
 
     public boolean rectRectCollision(double xPos1, double yPos1, double halfWidth1, double halfHeight1, double xPos2, double yPos2, double halfWidth2, double halfheight2){
 
+
+
+
         return false;
+    }
+
+    public boolean didRectRectColl(double rect1_x, double rect1_y, double rect1_width, double rect1_height, double rect2_x, double rect2_y, double rect2_width, double rect2_height){ //https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection
+        if (rect1_x < rect2_x + rect2_width &&
+                rect1_x + rect1_width > rect2_x &&
+                rect1_y < rect2_y + rect2_height &&
+                rect1_y + rect1_height > rect2_y) {
+            return true;
+        }else{
+            return false;
+        }
     }
 
 
