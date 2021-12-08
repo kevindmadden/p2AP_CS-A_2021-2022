@@ -95,8 +95,22 @@ public class Player {
 
     }
 
+    //public didRectCollide
+
     public double getxPos() {
         return xPos;
+    }
+
+    public double getyPos() {
+        return yPos;
+    }
+
+    public double getHalfWidth() {
+        return halfWidth;
+    }
+
+    public double getHalfHeight() {
+        return halfHeight;
     }
 
     @Override

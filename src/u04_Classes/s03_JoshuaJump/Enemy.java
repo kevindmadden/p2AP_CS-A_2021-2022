@@ -10,7 +10,7 @@ public class Enemy {
     public Enemy(Platform ground){
         yPos = 3+ground.getYTop();
         size = 3;
-        xVel = 30;
+        xVel = 3;
     }
 
     public void calculate(double timeElapsed){
@@ -23,5 +23,15 @@ public class Enemy {
         StdDraw.filledSquare(xPos, yPos, size);
     }
 
+    public double getxPos() {
+        return xPos;
+    }
 
+    public double getyPos() {
+        return yPos;
+    }
+
+    public double getSize() {
+        return size;
+    }
 }

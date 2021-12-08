@@ -36,9 +36,7 @@ public class Main {
                 //Calculation
                 player.calculate(timeElapsed);
                 enemy.calculate(timeElapsed);
-                if(player.getxPos() > 50){
-                    isGameOver = true;
-                }
+                didRectRectColl(player.getxPos(), player.getyPos(), player.getHalfWidth(), player.getHalfHeight(), enemy.getxPos(), enemy.getyPos(), enemy.getSize(), enemy.getSize());
 
                 //Graphics
                 Background.draw();
@@ -69,7 +67,7 @@ public class Main {
         return false;
     }
 
-    public boolean didRectRectColl(double rect1_x, double rect1_y, double rect1_width, double rect1_height, double rect2_x, double rect2_y, double rect2_width, double rect2_height){ //https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection
+    /*public boolean didRectRectColl(double rect1_x, double rect1_y, double rect1_width, double rect1_height, double rect2_x, double rect2_y, double rect2_width, double rect2_height){ //https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection
         if (rect1_x < rect2_x + rect2_width &&
                 rect1_x + rect1_width > rect2_x &&
                 rect1_y < rect2_y + rect2_height &&
@@ -78,7 +76,31 @@ public class Main {
         }else{
             return false;
         }
-    }
+    }*/
+
+        public static boolean didRectRectColl(double r1_x, double r1_y, double r1_halfWidth, double r1_halfHeight, double r2_x, double r2_y, double r2_halfWidth, double r2_halfHeight){
+            double r1_left = r1_x-r1_halfWidth;
+            double r1_right = r1_x+r1_halfWidth;
+            double r1_up = r1_y+r1_halfHeight;
+            double r1_down = r1_y-r1_halfHeight;
+            double r2_left = r2_x-r2_halfWidth;
+            double r2_right = r2_x+r2_halfWidth;
+            double r2_up = r2_y+r2_halfHeight;
+            double r2_down = r2_y-r2_halfHeight;
+
+            if(r2_right < r1_left ||
+               r2_left > r1_right ||
+               r2_up < r1_down ||
+               r2_down > r1_up){
+                System.out.println("No collision.");
+                return false;
+            }else{
+                System.out.println("Collision.");
+                return true;
+            }
+
+        }
+
 
 
 
