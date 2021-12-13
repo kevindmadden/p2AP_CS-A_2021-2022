@@ -14,6 +14,7 @@ public class Player {
     private double yVel;
     private double accel;
     private Platform ground;
+    private Platform platform1;
     private boolean hasUsedJump;
     private double jumpStartYPos;
     private boolean hasReachedMaxJumpHeight;
@@ -23,7 +24,7 @@ public class Player {
 
     private double yFeet;
 
-    public Player(double xPos, double yPos, double halfWidth, double halfHeight, Platform ground){
+    public Player(double xPos, double yPos, double halfWidth, double halfHeight, Platform ground, Platform platform1){
         this.xPos = xPos;
         this.yPos = yPos;
         this.halfWidth = halfWidth;
@@ -32,6 +33,7 @@ public class Player {
         this.height = halfHeight*2;
         this.accel = 4000;
         this.ground = ground;
+        this.platform1 = platform1;
         hasUsedJump = false;
         hasReachedMaxJumpHeight = false;
         shouldGravityBeginForcingJoshuaBackDown = false;
@@ -67,6 +69,18 @@ public class Player {
             jumpStartYPos = this.ground.getYTop();
         }
 
+        /*if(this.yFeet <= this.platform1.getYTop()){
+            isOnPlatform = true;
+            hasUsedJump = false;
+            hasReachedMaxJumpHeight = false;
+            jumpStartYPos = this.platform1.getYTop();
+        }*/
+
+
+
+
+
+
         if(StdDraw.isKeyPressed(KeyEvent.VK_UP) && !hasReachedMaxJumpHeight){
             yVel = JUMP_SPEED;
         }
@@ -89,10 +103,15 @@ public class Player {
 
         yPos = yPos + yVel*timeElapsed - (accel)*Math.pow(timeElapsed, 2);
         this.yFeet = this.yPos-this.halfHeight;
+
+        /*
+        if(this.yFeet < platform1.getYTop() && (this.xPos+this.halfWidth)>platform1.getxPos()-platform1.getHalfWidth() && (this.xPos-this.halfWidth)<platform1.getxPos()+platform1.getHalfWidth()){
+            yPos = platform1.getYTop()+this.halfHeight;
+        }*/
+
         if(this.yFeet < ground.getYTop()){
             yPos = ground.getYTop()+this.halfHeight;
         }
-
     }
 
     //public didRectCollide
@@ -111,6 +130,22 @@ public class Player {
 
     public double getHalfHeight() {
         return halfHeight;
+    }
+
+    public void setxPos(double xPos) {
+        this.xPos = xPos;
+    }
+
+    public void setyPos(double yPos) {
+        this.yPos = yPos;
+    }
+
+    public void setHalfWidth(double halfWidth) {
+        this.halfWidth = halfWidth;
+    }
+
+    public void setHalfHeight(double halfHeight) {
+        this.halfHeight = halfHeight;
     }
 
     @Override
