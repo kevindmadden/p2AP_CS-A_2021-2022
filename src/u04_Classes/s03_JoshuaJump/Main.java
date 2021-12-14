@@ -19,10 +19,17 @@ public class Main {
         StdDraw.setScale(0, 100);
         StdDraw.enableDoubleBuffering(); //Calling this method stops things from being drawn immediately after a draw method is called. This allows you to call many different draw methods without anything being drawn on the screen; when you call StdDraw.show(), everything will be drawn at once.
 
-        Platform ground = new Platform(50, 5, 50, 5);
-        Platform platform1 = new Platform(75, 30, 7, 2);
+        Platform[] platforms = new Platform[4];
 
-        Player player = new Player(25, 15, 2,5, ground, platform1);
+        Platform ground = new Platform(50, 5, 50, 5);
+        //Platform platform1 = new Platform(75, 30, 7, 2);
+        platforms[0] = new Platform(75, 30, 7, 2);
+        platforms[1] = new Platform(45, 25, 7, 2);
+        platforms[2] = new Platform(45, 55, 7, 2);
+        platforms[3] = new Platform(75, 60, 7, 2);
+
+
+        Player player = new Player(25, 15, 2,5, ground, platforms);
         Enemy enemy = new Enemy(ground);
 
 
@@ -39,12 +46,17 @@ public class Main {
                 if(didRectRectColl(player.getxPos(), player.getyPos(), player.getHalfWidth(), player.getHalfHeight(), enemy.getxPos(), enemy.getyPos(), enemy.getSize(), enemy.getSize())){
                     System.out.println("collision!\n");
                 };
-                platform1.managePlayerPlatformCollision(player);
+                for(Platform platform: platforms){
+                    platform.managePlayerPlatformCollision(player);
+                }
+
 
                 //Graphics
                 Background.draw();
                 ground.draw();
-                platform1.draw();
+                for(Platform platform: platforms){
+                    platform.draw();
+                }
                 player.draw();
                 enemy.draw();
             }

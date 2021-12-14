@@ -14,7 +14,8 @@ public class Player {
     private double yVel;
     private double accel;
     private Platform ground;
-    private Platform platform1;
+    //private Platform platform1;
+    private Platform[] platforms;
     private boolean hasUsedJump;
     private double jumpStartYPos;
     private boolean hasReachedMaxJumpHeight;
@@ -24,7 +25,7 @@ public class Player {
 
     private double yFeet;
 
-    public Player(double xPos, double yPos, double halfWidth, double halfHeight, Platform ground, Platform platform1){
+    public Player(double xPos, double yPos, double halfWidth, double halfHeight, Platform ground, Platform[] platforms){
         this.xPos = xPos;
         this.yPos = yPos;
         this.halfWidth = halfWidth;
@@ -33,7 +34,8 @@ public class Player {
         this.height = halfHeight*2;
         this.accel = 4000;
         this.ground = ground;
-        this.platform1 = platform1;
+        //this.platform1 = platform1;
+        this.platforms = platforms;
         hasUsedJump = false;
         hasReachedMaxJumpHeight = false;
         shouldGravityBeginForcingJoshuaBackDown = false;
@@ -69,7 +71,16 @@ public class Player {
             jumpStartYPos = this.ground.getYTop();
         }
 
-        /*if(this.yFeet <= this.platform1.getYTop()){
+        for(Platform platform : platforms){
+            if(this.yFeet <= platform.getYTop()){
+                isOnPlatform = true;
+                hasUsedJump = false;
+                hasReachedMaxJumpHeight = false;
+                jumpStartYPos = platform.getYTop();
+            }
+        }
+        /*
+        if(this.yFeet <= this.platform1.getYTop()){
             isOnPlatform = true;
             hasUsedJump = false;
             hasReachedMaxJumpHeight = false;

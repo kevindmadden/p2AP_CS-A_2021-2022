@@ -29,9 +29,12 @@ public class Platform {
     public void managePlayerPlatformCollision(Player player){
         //Setup two different hitboxes
         boolean didHitTopHitbox = Main.didRectRectColl(player.getxPos(), player.getyPos(), player.getHalfWidth(), player.getHalfHeight(), xPos, yPos+0.5*halfHeight, halfWidth, 0.5*halfHeight);
-
+        boolean didHitBottomHitbox =  Main.didRectRectColl(player.getxPos(), player.getyPos(), player.getHalfWidth(), player.getHalfHeight(), xPos, yPos-0.5*halfHeight, halfWidth, 0.5*halfHeight);
         if(didHitTopHitbox){
             player.setyPos(this.yPos+this.halfHeight+player.getHalfHeight());
+        }
+        if(didHitBottomHitbox){
+            player.setyPos(this.yPos-this.halfHeight-player.getHalfHeight());
         }
 
         //Top hitbox
