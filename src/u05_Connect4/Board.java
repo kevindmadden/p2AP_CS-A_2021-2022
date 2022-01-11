@@ -4,11 +4,8 @@ public class Board {
 
     Token[][] board;
 
-    //[row][col]
-
     public Board(){
         board = new Token[6][7];
-        // { row1:{...col...}, row2: {...col...},..., row6: {...col...}}
         for(int row=0; row<board.length; row++){
             for(int col=0; col<board[0].length; col++){
                 System.out.print(board[row][col]);
@@ -16,6 +13,17 @@ public class Board {
             System.out.println("---");
         }
     }
+
+    /*
+    7 columns
+        -Each col should be 10 as the width
+        -The columns will take up space from 0 to 70 (x-coordinates)
+    6 rows
+        -Each row shoud be 10 as the width
+
+
+
+     */
 
     public void draw(){
 

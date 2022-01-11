@@ -1,17 +1,5 @@
 package u05_Connect4;
 
-/*
-    Board
-        -7 cols, 6 rows
-    Tokens
-        -shape (circle)
-        -**color**
-    Gameplay (User input)
-        -Alternate turns
-        -Mouse input
-        -making the tokens drop
- */
-
 public class Main {
     public static void main(String[] arg){
         Board board = new Board();
