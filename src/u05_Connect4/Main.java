@@ -24,16 +24,16 @@ public class Main {
                 System.out.println(StdDraw.mouseX()+ ", "+StdDraw.mouseY());
             }
             prevMouseClickedValue = StdDraw.isMousePressed();
-
             if(didClickOccur){
                 int colNumToDropIn;
+                /*
+                    Alternative way to avoid tons of else if's
                 for(int colNum = 0; colNum < Main.NUM_OF_COLS; colNum++ ){
                     if( StdDraw.mouseX() < (colNum+1)*10){
                         colNumToDropIn = colNum;
                         break;
                     }
-                }
-
+                }*/
 
                 if(StdDraw.mouseX() < 10){
                     colNumToDropIn = 0;
@@ -41,7 +41,26 @@ public class Main {
                     colNumToDropIn = 1;
                 }else if(StdDraw.mouseX() < 30){
                     colNumToDropIn = 2;
+                }else if(StdDraw.mouseX() < 40){
+                    colNumToDropIn = 3;
+                }else if(StdDraw.mouseX() < 50){
+                    colNumToDropIn = 4;
+                }else if(StdDraw.mouseX() < 60){
+                    colNumToDropIn = 5;
+                }else if(StdDraw.mouseX() <= 70){
+                    colNumToDropIn = 6;
                 }
+                
+                int rowNumToDropIn;
+                /*
+                        This is where your logic should be for determining the row to drop the token in.
+
+                 */
+
+
+
+
+
 
             }
 
