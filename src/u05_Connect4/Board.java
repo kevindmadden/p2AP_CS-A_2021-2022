@@ -2,7 +2,7 @@ package u05_Connect4;
 
 public class Board {
 
-    Token[][] board;
+    private Token[][] board;
 
     public Board(){
         board = new Token[Main.NUM_OF_ROWS][Main.NUM_OF_COLS];
@@ -13,6 +13,10 @@ public class Board {
             }
             System.out.println("---");
         }
+    }
+
+    public Token[][] getBoard(){
+        return this.board;
     }
 
     /*
@@ -34,6 +38,17 @@ public class Board {
                 StdDraw.filledCircle(x+5, y+5, 4.5);
             }
         }
+
+        for(int row=0; row<board.length; row++) {
+            for (int col = 0; col < board[0].length; col++) {
+                Token tempToken = board[row][col];
+                if(tempToken != null){
+                    tempToken.draw(col*10,row*10);
+                }
+
+            }
+        }
+
     }
 
     //This draw method draws the board accurately regardless of the board's dimensions

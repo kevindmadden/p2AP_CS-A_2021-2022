@@ -4,6 +4,9 @@ public class Main {
     static final int NUM_OF_ROWS = 6;
     static final int NUM_OF_COLS = 7;
 
+    //TODO:
+    //Alternating colors when dropped (add playNum property to token class?)
+    //Begin thinking about how to scan the board to check if a player won with 4 horizontal tokens
 
     public static void main(String[] arg){
         Board board = new Board();
@@ -14,54 +17,27 @@ public class Main {
         StdDraw.enableDoubleBuffering(); //Calling this method stops things from being drawn immediately after a draw method is called. This allows you to call many different draw methods without anything being drawn on the screen; when you call StdDraw.show(), everything will be drawn at once.
 
         boolean prevMouseClickedValue = false;
-        boolean didClickOccur = false;
+
 
         double timeElapsed = 0.017; //0.017 seconds-- this is how long each frame of our animation appears.
         while(true){
             //Mouse-clicking logic - Keep at top
+            boolean didClickOccur = false;
             if(!StdDraw.isMousePressed() && prevMouseClickedValue){
                 didClickOccur = true;
                 System.out.println(StdDraw.mouseX()+ ", "+StdDraw.mouseY());
             }
             prevMouseClickedValue = StdDraw.isMousePressed();
+
             if(didClickOccur){
-                int colNumToDropIn;
-                /*
-                    Alternative way to avoid tons of else if's
-                for(int colNum = 0; colNum < Main.NUM_OF_COLS; colNum++ ){
-                    if( StdDraw.mouseX() < (colNum+1)*10){
-                        colNumToDropIn = colNum;
+                int colNumToDropIn = (int) (StdDraw.mouseX()/10.0);
+                Token[][] tempBoardArr = board.getBoard();
+                for(int row = 0; row < NUM_OF_ROWS; row++){
+                    if(tempBoardArr[row][colNumToDropIn] == null){
+                        tempBoardArr[row][colNumToDropIn] = new Token();
                         break;
                     }
-                }*/
-
-                if(StdDraw.mouseX() < 10){
-                    colNumToDropIn = 0;
-                }else if(StdDraw.mouseX() < 20){
-                    colNumToDropIn = 1;
-                }else if(StdDraw.mouseX() < 30){
-                    colNumToDropIn = 2;
-                }else if(StdDraw.mouseX() < 40){
-                    colNumToDropIn = 3;
-                }else if(StdDraw.mouseX() < 50){
-                    colNumToDropIn = 4;
-                }else if(StdDraw.mouseX() < 60){
-                    colNumToDropIn = 5;
-                }else if(StdDraw.mouseX() <= 70){
-                    colNumToDropIn = 6;
                 }
-                
-                int rowNumToDropIn;
-                /*
-                        This is where your logic should be for determining the row to drop the token in.
-
-                 */
-
-
-
-
-
-
             }
 
 
