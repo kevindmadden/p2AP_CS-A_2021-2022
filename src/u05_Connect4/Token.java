@@ -1,9 +1,19 @@
 package u05_Connect4;
 
 public class Token {
+    int player;
+
+    public Token(int player){
+        this.player = player;
+        System.out.println("player number"+player);
+    }
 
     public void draw(int x, int y){
-        StdDraw.setPenColor(StdDraw.YELLOW);
+        if(this.player == 1){
+            StdDraw.setPenColor(StdDraw.YELLOW);
+        }else if(this.player == 2){
+            StdDraw.setPenColor(StdDraw.RED);
+        }
         StdDraw.filledCircle(x+5,y+5,4.5);
     }
 

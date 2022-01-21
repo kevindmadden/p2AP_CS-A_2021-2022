@@ -17,6 +17,7 @@ public class Main {
         StdDraw.enableDoubleBuffering(); //Calling this method stops things from being drawn immediately after a draw method is called. This allows you to call many different draw methods without anything being drawn on the screen; when you call StdDraw.show(), everything will be drawn at once.
 
         boolean prevMouseClickedValue = false;
+        int turnNumber = 0;
 
 
         double timeElapsed = 0.017; //0.017 seconds-- this is how long each frame of our animation appears.
@@ -34,10 +35,13 @@ public class Main {
                 Token[][] tempBoardArr = board.getBoard();
                 for(int row = 0; row < NUM_OF_ROWS; row++){
                     if(tempBoardArr[row][colNumToDropIn] == null){
-                        tempBoardArr[row][colNumToDropIn] = new Token();
+                        tempBoardArr[row][colNumToDropIn] = new Token((turnNumber%2)+1 );
                         break;
                     }
                 }
+                //switch turns
+                turnNumber++;
+
             }
 
 
