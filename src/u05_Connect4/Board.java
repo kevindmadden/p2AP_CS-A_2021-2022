@@ -50,6 +50,24 @@ public class Board {
         }
 
     }
+    //[row][col]
+    public int isGameOver(){
+        for(int col = 0; col < board[0].length; col++){
+
+            if(board[0][col] != null && board[0][col+1]!=null && board[0][col+2]!=null && board[0][col+3]!=null ){
+                if(board[0][col].getPlayer() == board[0][col+1].getPlayer()
+                        && board[0][col+1].getPlayer()==board[0][col+2].getPlayer()
+                        && board[0][col+2].getPlayer()==board[0][col+3].getPlayer()){
+
+                }
+            }
+
+
+            //if(board[0][col].getPlayer() && board[0][col+1].getPlayer() && board[0][col+2].getPlayer() && board[0][col+3].getPlayer() )
+        }
+        return 0;
+    }
+
 
     //This draw method draws the board accurately regardless of the board's dimensions
     public void fancyDraw(){

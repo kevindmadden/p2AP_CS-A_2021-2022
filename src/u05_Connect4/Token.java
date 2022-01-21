@@ -1,7 +1,7 @@
 package u05_Connect4;
 
 public class Token {
-    int player;
+    private int player;
 
     public Token(int player){
         this.player = player;
@@ -15,6 +15,10 @@ public class Token {
             StdDraw.setPenColor(StdDraw.RED);
         }
         StdDraw.filledCircle(x+5,y+5,4.5);
+    }
+
+    public int getPlayer(){
+        return player;
     }
 
 }
