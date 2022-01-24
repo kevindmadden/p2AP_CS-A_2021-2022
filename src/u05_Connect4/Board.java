@@ -52,19 +52,21 @@ public class Board {
     }
     //[row][col]
     public int isGameOver(){
-        for(int col = 0; col < board[0].length; col++){
 
-            if(board[0][col] != null && board[0][col+1]!=null && board[0][col+2]!=null && board[0][col+3]!=null ){
-                if(board[0][col].getPlayer() == board[0][col+1].getPlayer()
-                        && board[0][col+1].getPlayer()==board[0][col+2].getPlayer()
-                        && board[0][col+2].getPlayer()==board[0][col+3].getPlayer()){
+        for(int row = 0; row < board.length; row++){
+            //the-code-block-that-cycles-through-the-col-numbers
+            for(int col = 0; col <= 3 ; col++){
+                if(board[row][col] != null && board[row][col+1]!=null && board[row][col+2]!=null && board[row][col+3]!=null ){
+                    if(board[row][col].getPlayer() == board[row][col+1].getPlayer()
+                            && board[row][col+1].getPlayer()== board[row][col+2].getPlayer()
+                            && board[row][col+2].getPlayer()==board[row][col+3].getPlayer()){
+                        System.out.println("win detected");
 
+                    }
                 }
             }
-
-
-            //if(board[0][col].getPlayer() && board[0][col+1].getPlayer() && board[0][col+2].getPlayer() && board[0][col+3].getPlayer() )
         }
+
         return 0;
     }
 

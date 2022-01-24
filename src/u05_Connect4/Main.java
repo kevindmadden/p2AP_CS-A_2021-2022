@@ -42,7 +42,7 @@ public class Main {
                 /*if(isGameOver()){
                     //printing out a message that player 1 or 2 won.
                 }*/
-
+                board.isGameOver();
                 //switch turns
                 turnNumber++;
 
