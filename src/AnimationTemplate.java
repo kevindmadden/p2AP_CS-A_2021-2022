@@ -17,5 +17,56 @@ public class AnimationTemplate {
         }
     }
 
+    public static boolean didRectRectColl(double r1_x, double r1_y, double r1_halfWidth, double r1_halfHeight, double r2_x, double r2_y, double r2_halfWidth, double r2_halfHeight){
+        double r1_left = r1_x-r1_halfWidth;
+        double r1_right = r1_x+r1_halfWidth;
+        double r1_up = r1_y+r1_halfHeight;
+        double r1_down = r1_y-r1_halfHeight;
+        double r2_left = r2_x-r2_halfWidth;
+        double r2_right = r2_x+r2_halfWidth;
+        double r2_up = r2_y+r2_halfHeight;
+        double r2_down = r2_y-r2_halfHeight;
+
+        if(r2_right < r1_left ||
+                r2_left > r1_right ||
+                r2_up < r1_down ||
+                r2_down > r1_up){
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+
+    public static boolean didCirlecRectColl(double rect_x, double rect_y, double rect_w, double rect_h, double circle_x, double circle_y, double circle_r){
+        double distX = Math.abs(circle_x - rect_x-rect_w/2);
+        double distY = Math.abs(circle_y - rect_y-rect_h/2);
+
+        if (distX > (rect_w/2 + circle_r)) { return false; }
+        if (distY > (rect_h/2 + circle_r)) { return false; }
+
+        if (distX <= (rect_w/2)) { return true; }
+        if (distY <= (rect_h/2)) { return true; }
+
+        double dx=distX-rect_w/2;
+        double dy=distY-rect_h/2;
+        return (dx*dx+dy*dy<=(circle_r*circle_r));
+    }
+
+    public static boolean didCircleCircleColl(double cir1_x, double cir1_y, double cir1_r, double cir2_x, double cir2_y, double cir2_r){
+        double distanceBetweenCenters = Math.sqrt( Math.pow(cir2_x-cir1_x,2) + Math.pow(cir2_y-cir1_y, 2));
+        double sumOfRadii = cir1_r + cir2_r;
+
+        if(distanceBetweenCenters > sumOfRadii){
+            //they aren't touching
+            return false;
+        }else{
+            //they are touching
+            return true;
+
+        }
+    }
+
+
 
 }
