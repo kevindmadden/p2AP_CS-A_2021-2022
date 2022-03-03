@@ -4,8 +4,10 @@ public class Board {
 
     private Token[][] board;
 
+
     public Board(){
         board = new Token[Main.NUM_OF_ROWS][Main.NUM_OF_COLS];
+
         //board = new Token[10][40]; //change board dimensions for fun
         for(int row=0; row<board.length; row++){
             for(int col=0; col<board[0].length; col++){
@@ -52,15 +54,13 @@ public class Board {
     }
     //[row][col]
     public int isGameOver(){
-
         for(int row = 0; row < board.length; row++){
             //the-code-block-that-cycles-through-the-col-numbers
             for(int col = 0; col <= 3 ; col++){
                 if(board[row][col] != null && board[row][col+1]!=null && board[row][col+2]!=null && board[row][col+3]!=null ){
                     if(board[row][col].getPlayer() == board[row][col+1].getPlayer()
-                            && board[row][col+1].getPlayer()== board[row][col+2].getPlayer()
+                            && board[row][col+1].getPlayer()==board[row][col+2].getPlayer()
                             && board[row][col+2].getPlayer()==board[row][col+3].getPlayer()){
-                        System.out.println("win detected");
 
                     }
                 }
