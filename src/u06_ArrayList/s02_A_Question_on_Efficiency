@@ -1,0 +1,28 @@
+Scenario:
+-You have a single ArrayList with the variable name: squid
+-squid contains exactly one of each integer between 0 and 200,000,000
+-The ordering of the integers in squid is completely random
+
+Task:
+-Pick a random integer between 0 and 200 million. Determine what the index location is of your chosen random integer.
+
+Question:
+-What would be an efficient way to complete this task?
+-Brainstorm and come up with an idea. Then I'll ask people to share.
+
+Possible Solutions:
+-Scan through array one element at a time, checking each number until you find the right one.
+
+Task #2:
+-Do the previous task 100,000,000 of times with a new random integer each time.
+
+Possible Solutions:
+-Do the previous solution 100,000,000 times.
+-Same as above, except remove numbers you find.
+
+Question: Would it be easier to search the list if the list was sorted (in order)?
+-You have 200 million integers in order in an ArrayList.
+
+Takeaway: Sorting a list of items can simplify looking something up in that list.
+
+

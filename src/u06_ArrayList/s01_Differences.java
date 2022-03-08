@@ -2,7 +2,7 @@ package u06_ArrayList;
 
 import java.util.ArrayList;
 
-public class Differences {
+public class s01_Differences {
 
     public static void main(String[] args){
 
