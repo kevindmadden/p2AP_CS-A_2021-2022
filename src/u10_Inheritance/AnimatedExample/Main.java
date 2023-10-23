@@ -1,5 +1,7 @@
 package u10_Inheritance.AnimatedExample;
 
+import java.util.ArrayList;
+
 public class Main {
     public static void main(String[] args){
         StdDraw.setScale(0, 100);
@@ -7,15 +9,23 @@ public class Main {
 
         Creature creature = new Creature(50, 50, 10, 15,5);
         InescapableCreature inescapableCreature = new InescapableCreature(25, 25, 40, 50, 3);
+        GrowShrinkCreature growShrinkCreature = new GrowShrinkCreature(75, 75, 10, 10, 4);
+
+        ArrayList<Creature> list = new ArrayList<Creature>();
+        list.add(creature);
+        list.add(inescapableCreature);
+        list.add(growShrinkCreature);
 
         double timeElapsed = 0.017; //0.017 seconds-- this is how long each frame of our animation appears.
         while(true){
 
             creature.calculate(timeElapsed);
             inescapableCreature.calculate(timeElapsed);
+            growShrinkCreature.calculate(timeElapsed);
 
             creature.draw();
             inescapableCreature.draw();
+            growShrinkCreature.draw();
 
 
 
